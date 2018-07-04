@@ -11,7 +11,8 @@ let users = {};
 let screensharingusers = {};
 let socketio;
 let trimmed;
-server.listen(5000);
+let port = process.env.PORT || 3000
+server.listen(port);
 console.log('App started at port...5000');
 app.use(express.static(__dirname + '/public'));
 app.get('/',function(req,res){
