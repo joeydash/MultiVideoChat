@@ -1,15 +1,16 @@
-var fs = require('fs');
-var express = require('express');
-var app = express();
-var server = require('http').createServer( app);
-var io = require('socket.io').listen(server);
-var util = require('util');
-var now = require("performance-now");
-var rooms = [];
-var users = {};
-var screensharingusers = {};
-var socketio;
-var trimmed;
+let fs = require('fs');
+let express = require('express');
+let app = express();
+let http = require('http');
+let server = http.createServer(app);
+let io = require('socket.io').listen(server);
+let util = require('util');
+let now = require("performance-now");
+let rooms = [];
+let users = {};
+let screensharingusers = {};
+let socketio;
+let trimmed;
 server.listen(5000);
 console.log('App started at port...5000');
 app.use(express.static(__dirname + '/public'));
@@ -127,7 +128,7 @@ io.sockets.on('connection',function(socket){
 	{
 		try
 		{
-				var key = socket.key;
+				let key = socket.key;
 				if(rooms.indexOf(key) === -1)
 			{
 				console.log('Generating new key!!');
@@ -174,8 +175,8 @@ io.sockets.on('connection',function(socket){
 	{
 		try
 		{
-			var username = socket.username;
-			var key = socket.users[socket.username];
+			let username = socket.username;
+			let key = socket.users[socket.username];
 			console.log('Deleting inside removeUserKey() function...');
 			users[socket.key].splice(users[socket.key].indexOf(username),1);
 			delete screensharingusers[socket.key][username];
