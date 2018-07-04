@@ -277,7 +277,6 @@ $(window).load(function(){
 	{
 		var userPrompt = $('#username-prompt');
     var input = "joeydash";
-    $.trim($(this).find('input').eq(0).val())"";
     if(input==='')
     {
       userPrompt.find('#errors').removeClass().addClass('wrong').text('You cannot leave it blank.');
@@ -306,7 +305,7 @@ $(window).load(function(){
          }
 
     }
-		
+
 	}
 
 });
