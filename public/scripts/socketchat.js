@@ -267,7 +267,6 @@ $(window).load(function(){
 		var left = window.innerWidth/2 - 250;
 		var top = window.innerHeight/2 - 100;
 		userPrompt.css({
-      'display':'none',
 			'position': 'absolute',
 			'top': top,
 			'left': left
