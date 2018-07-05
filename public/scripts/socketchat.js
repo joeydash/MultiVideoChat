@@ -387,9 +387,13 @@ function removeRemoteVideo()
 		//ENDS--
 		setTimeout(function(){
 			socket.screenStream.stop();
+
 		}, 1000);
 
 	}
+  setTimeout(function(){
+    window.history.back();
+  }, 2000);
 
 }
 
