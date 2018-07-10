@@ -8,20 +8,12 @@ $(document).ready(function(){
 
 function showBlackOverlay()
 {
-	$('#black-overlay #cubes').show();
-	$('#black-overlay').removeClass();
 	$('#black-overlay').show();
 }
 
 function removeBlackOverlay()
 {
-	$('#black-overlay').addClass('zoomOut');
 	$('#black-overlay').hide();
-}
-
-function removeCubes()
-{
-	$('#black-overlay #cubes').hide();
 }
 
 function showImage(data)
@@ -49,7 +41,6 @@ function showImage(data)
 		$('#black-overlay').css({
 			'cursor': 'pointer'
 		});
-		removeCubes();
 		setTimeout(function(){
 			imageHide.css('display','inline-block').removeClass('zoomIn').removeClass('zoomOut').addClass('zoomIn');
 		},200);
@@ -79,7 +70,7 @@ function removeImage()
 		$('#black-overlay').find('#image-container').remove();
 		removeBlackOverlay();
 	},300);
-	
+
 }
 
 function showVideo(data)
@@ -106,7 +97,6 @@ function showVideo(data)
 		$('#black-overlay').css({
 			'cursor': 'pointer'
 		});
-		removeCubes();
 		setTimeout(function(){
 			imageHide.css('display','inline-block').removeClass('zoomIn').removeClass('zoomOut').addClass('zoomIn');
 		},200);
@@ -135,5 +125,5 @@ function removeVideo()
 		$('#black-overlay').find('#image-container').remove();
 		removeBlackOverlay();
 	},300);
-	
+
 }
