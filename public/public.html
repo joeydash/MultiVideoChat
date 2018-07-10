@@ -1,117 +1,64 @@
- <html>
+<html>
+
 <head>
-	<title>Video Walls Video Chat</title>
-	<link rel="stylesheet" type="text/css" href="styles/chat.css">
-	<link rel="stylesheet" type="text/css" href="styles/icomoon/style.css">
-	<link rel="stylesheet" type="text/css" href="styles/style.css">
-	<link rel="stylesheet" type="text/css" href="styles/bubble.css">
-	<link rel="stylesheet" type="text/css" href="styles/upload-file.css">
+  <title>Video Walls Video Chat</title>
+  <link rel="stylesheet" type="text/css" href="styles/chat.css">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <link rel="stylesheet" type="text/css" href="styles/upload-file.css">
+  <link rel="stylesheet" type="text/css" href="styles/loader.css">
 
-	<script src="socket.io/socket.io.js"></script>
-	<script src="scripts/adapter.js"></script>
-	<script src="scripts/jquery.js"></script>
-	<script src="scripts/easing.js"></script>
-	<script type="text/javascript" src="scripts/overlay.js"></script>
-	<script src="scripts/socketchat.js"></script>
-	<script src="scripts/chat-solo.js"></script>
-	<script type="text/javascript" src="scripts/countdown-logic.js"></script>
-	<script type="text/javascript" src="scripts/slider-easing.js"></script>
+
+  <!-- alertify -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/alertify.min.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/default.min.css" />
+
+  <script src="socket.io/socket.io.js"></script>
+  <script src="scripts/adapter.js"></script>
+  <script src="scripts/jquery.js"></script>
+  <script src="scripts/easing.js"></script>
+  <script type="text/javascript" src="scripts/overlay.js"></script>
+  <script src="scripts/socketchat.js"></script>
+  <script src="scripts/chat-solo.js"></script>
+  <script type="text/javascript" src="scripts/countdown-logic.js"></script>
+  <script type="text/javascript" src="scripts/slider-easing.js"></script>
+
+  <!-- alertify -->
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/alertify.min.js"></script>
 </head>
+
 <body>
-	<div id="main-background">
-		<div id="local-video">
-			<video id="my-video" autoplay></video>
-			<div id="toolbar">
-				<div id="icons-tools">
-					<div style="position: relative; left: -4px;" class="main-camera-icon"  >
-					</div>
-					<div style="position: relative; left: -8px;" class="main-audio-icon">
-					</div>
-					<div style="border-right-width: 0px; position: relative; left: -12px;" class="main-phone-drop-icon" onclick="window.history.back()">
-					</div>
+  <div id="main-background">
+    <div id="local-video">
+      <video id="my-video" autoplay></video>
+      <div id="toolbar">
+        <div id="icons-tools">
+          <div style="position: relative; left: -4px;" class="main-camera-icon">
+          </div>
+          <div style="position: relative; left: -8px;" class="main-audio-icon">
+          </div>
+          <div style="border-right-width: 0px; position: relative; left: -8px;" class="main-phone-drop-icon" onclick="window.history.back()">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="remote-video">
+  </div>
+  </div>
 
-				</div>
-			</div>
-		</div>
-		</div>
-		<div id="remote-video" >
-		</div>
-		<div id="username-prompt" style="display: none;">
-			<div id="username-text">
-				Enter Your Username
-			</div>
-			<form id="username">
-				<input type="text" placeholder="Please Enter Your Username">
-				<input type="submit" style="display: none">
-			</form>
-			<div id="errors">
-			</div>
-		</div>
-	</div>
-	<div id="preload" style="display: none">
-		<img src="images/buttons/MIC/mic-normal.png" />
-		<img src="images/buttons/MIC/mic-hover.png" />
-		<img src="images/buttons/MIC/mic-active.png" />
+  <!-- Loader start-->
+  <div id="black-overlay">
+    <div id="cubes" style="display: inline-block; position: relative;">
+      <div class='tetris'>
+        <div class='block1'></div>
+        <div class='block2'></div>
+        <div class='block3'></div>
+        <div class='block4'></div>
+      </div>
+    </div>
+  </div>
+  <!-- Loader end -->
 
-		<img src="images/buttons/PHONE/phone-normal.png" />
-		<img src="images/buttons/PHONE/phone-hover.png" />
-		<img src="images/buttons/PHONE/phone-active.png" />
-
-		<img src="images/buttons/RESIZE/resize-normal.png" />
-		<img src="images/buttons/RESIZE/resize-hover.png" />
-		<img src="images/buttons/RESIZE/resize-active.png" />
-
-		<img src="images/buttons/CAM/cam-normal.png" />
-		<img src="images/buttons/CAM/cam-hover.png" />
-		<img src="images/buttons/CAM/cam-active.png" />
-	</div>
-	<div id="black-overlay">
-		<div id="cubes" style="display: inline-block; position: relative;">
-			<div class="cube1">
-			</div>
-			<div class="cube2">
-			</div>
-		</div>
-	</div>
-			<!-- Right Container Starts !!!!!-->
-	<div id="sidebar-right">
-		<div id="first-section">
-			<div id="first-right-icons">
-				<img src="images/buttons/1.png">
-				<img src="images/buttons/2.png">
-				<img src="images/buttons/3.png">
-				<img src="images/buttons/4.png">
-			</div>
-			<div id="first-names">
-				<div id="first-speaker">
-				</div>
-				<div id="second-speaker">
-				</div>
-			</div>
-		</div>
-		<div id="second-section">
-		</div>
-		<div id="third-section">
-			<form id="second-section-form">
-				<textarea disabled rows="7" style="width: 100%; text-align: left" id="first-chat" autocomplete="off" placeholder="Waiting for the other user."></textarea>
-				<input type="submit" style="display: none">
-			</form>
-		</div>
-		<div id="fourth-section">
-				<div id="first-attach">
-					<input style="display: none" id="fileupload" type="file" name="files[]" multiple>
-				</div>
-				<img src="images/buttons/plus.png" id="first-plus">
-				<img src="images/buttons/send.png" id="first-plane">
-		</div>
-	</div>
-		<!-- Right Container ENds... !!!!!-->
-	<div id="screen-share">
-		<video id="my-screen-share" autoplay></video>
-	</div>
-
-	<div id="remote-screen-share">
-		<video id="my-remote-screen-share" autoplay></video>
-	</div>
 </body>
+
 </html>
