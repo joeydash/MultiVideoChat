@@ -23,7 +23,6 @@ let screenSharedHeight;
 
 
 $(window).load(function() {
-
   let video = $('#local-video');
   let width = 1 * window.innerWidth;
   main_width = width;
@@ -39,15 +38,15 @@ $(window).load(function() {
   y = height;
   let oldHeight;
   fff = height;
+
   // alertify
   alertify.defaults.glossary.title = 'video walls alert';
-
   // Setting toolobar
   setToolbar();
 
 
   $('#icons-tools').css({
-    'width': height
+    'width': .6*height
   });
   //Setting ends..
   $('#local-chat-arrow').css({
@@ -238,7 +237,7 @@ $(window).load(function() {
           $('#local-chat-arrow').addClass('zoomIn');
         });
       });
-      let iconToolsHeight = 104;
+      let iconToolsHeight = 90;
       $('#icons-tools').clone().css({
         'background': 'rgba(42, 56, 143, 0.5)',
         'height': iconToolsHeight,

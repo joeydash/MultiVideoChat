@@ -1,9 +1,9 @@
 @charset "utf-8";
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   border: 0;
   font-size: 100%;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Open Sans', sans-serif;
   vertical-align: baseline;
   margin: 0;
   padding: 0
@@ -65,13 +65,14 @@ table {
 
 #icons-tools {
   display: inline-block;
-  z-index: 2;
+  z-index: 4;
   background: rgba(0, 0, 0, 0.7);
   background-blend-mode: multiply;
   position: relative;
   left: -0.5px;
   top: -10px;
   z-index: 20000000000;
+  border-radius: 4px;
 }
 
 [class^="main-"], [class*=" main-"] {
@@ -99,7 +100,6 @@ table {
   -moz-animation-duration: 3s;
   left: 147px;
 }
-
 
 .main-camera-icon-active {
   background-image: url('images/buttons/CAM/cam-active.png');
@@ -131,7 +131,6 @@ table {
   background-repeat: no-repeat;
   width: 80px;
   height: 80px;
-  margin-right: 26px;
 }
 
 .main-audio-icon {
@@ -140,7 +139,6 @@ table {
   background-repeat: no-repeat;
   width: 80px;
   height: 80px;
-  margin-right: 26px;
 }
 
 .main-audio-icon:hover {
@@ -151,13 +149,38 @@ table {
   background-image: url('images/buttons/MIC/mic-active.png');
 }
 
+.main-screen-icon-active {
+  background-image: url('images/buttons/SCREEN/screen-active.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 80px;
+  height: 80px;
+
+}
+
+.main-screen-icon {
+  background-image: url('images/buttons/SCREEN/screen-normal.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 80px;
+  height: 80px;
+}
+
+.main-screen-icon:hover {
+  background-image: url('images/buttons/SCREEN/screen-hover.png');
+}
+
+.main-screen-icon:active {
+  background-image: url('images/buttons/SCREEN/screen-active.png');
+}
+
 .main-phone-drop-icon-active {
   background-image: url('images/buttons/PHONE/phone-active.png');
   background-size: contain;
   background-repeat: no-repeat;
   width: 80px;
   height: 80px;
-  margin-left: 32px;
+
 }
 
 .main-phone-drop-icon {
@@ -166,7 +189,6 @@ table {
   background-repeat: no-repeat;
   width: 80px;
   height: 80px;
-  margin-left: 32px;
 }
 
 .main-phone-drop-icon:hover {
@@ -175,32 +197,6 @@ table {
 
 .main-phone-drop-icon:active {
   background-image: url('images/buttons/PHONE/phone-active.png');
-}
-
-.main-expand-icon-active {
-  background-image: url('images/buttons/RESIZE/resize-active.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 80px;
-  height: 80px;
-  left: -17px;
-}
-
-.main-expand-icon {
-  background-image: url('images/buttons/RESIZE/resize-normal.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 80px;
-  height: 80px;
-  left: -17px;
-}
-
-.main-expand-icon:hover {
-  background-image: url('images/buttons/RESIZE/resize-hover.png');
-}
-
-.main-expand-icon:active {
-  background-image: url('images/buttons/RESIZE/resize-active.png');
 }
 
 #black-overlay {
@@ -215,7 +211,6 @@ table {
   -webkit-animation-duration: 100ms;
   -moz-animation-duration: 100ms;
 }
-
 
 #my-screen-share {
   -webkit-animation-duration: 1s;
@@ -233,42 +228,4 @@ table {
 
 #remote-screen-share {
   overflow: hidden;
-}
-
-@-webkit-keyframes cubemove {
-  25% {
-    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5)
-  }
-  50% {
-    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg)
-  }
-  75% {
-    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5)
-  }
-  100% {
-    -webkit-transform: rotate(-360deg)
-  }
-}
-
-@keyframes cubemove {
-  25% {
-    transform: translateX(42px) rotate(-90deg) scale(0.5);
-    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
-  }
-  50% {
-    transform: translateX(42px) translateY(42px) rotate(-179deg);
-    -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
-  }
-  50.1% {
-    transform: translateX(42px) translateY(42px) rotate(-180deg);
-    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
-  }
-  75% {
-    transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
-    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
-  }
-  100% {
-    transform: rotate(-360deg);
-    -webkit-transform: rotate(-360deg);
-  }
 }
