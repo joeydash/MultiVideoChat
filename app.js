@@ -28,7 +28,7 @@ app.get('/:key',function(req,res){
   	}
 	else
 	{
-		res.sendFile(__dirname+'/public/public.html');
+		res.sendFile(__dirname+'/public/room.html');
 	}
 
 });

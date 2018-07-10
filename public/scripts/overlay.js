@@ -1,11 +1,6 @@
 $(document).ready(function(){
 	var hh = window.innerHeight/2 - 12;
-
-	$('#black-overlay #cubes').css({
-		'top': hh
-	});
 });
-
 function showBlackOverlay()
 {
 	$('#black-overlay').show();
