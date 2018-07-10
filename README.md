@@ -1,5 +1,6 @@
-# Video Walls Video Chat Site
+# Multi Video Chat Site
 
+Create you own Hangout like app and deploy it to your own server.
 
 ## Installation
 
