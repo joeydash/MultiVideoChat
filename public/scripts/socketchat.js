@@ -35,7 +35,6 @@ $(window).load(function() {
   icontop = heightmain - 74;
   elem = video.find('video')[0];
   elem.muted = true;
-  $('#username input').eq(0).focus();
   x = top;
   y = height;
   let oldHeight;
