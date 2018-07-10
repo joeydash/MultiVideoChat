@@ -23,7 +23,7 @@ let screenSharedHeight;
 
 
 $(window).load(function() {
-  alertify.defaults.glossary.title = 'video walls alert';
+
   let video = $('#local-video');
   let width = 1 * window.innerWidth;
   main_width = width;
@@ -41,7 +41,7 @@ $(window).load(function() {
   let oldHeight;
   fff = height;
   // alertify
-
+  alertify.defaults.glossary.title = 'video walls alert';
 
   // Setting toolobar
   setToolbar();
@@ -120,8 +120,7 @@ $(window).load(function() {
     'left': left,
     'bottom': 0
   });
-  resizeUserPrompt();
-  takeUserInput();
+  setUserName();
   let constraints = {
     video: true,
     audio: true
@@ -210,6 +209,7 @@ $(window).load(function() {
   //FUNCTIONS START
   function failure() {
     console.log('Sorry...Could not get the video !!!');
+    alertify.alert("Sorry...Could not get the video");
   }
 
   function success(stream) {
@@ -254,19 +254,9 @@ $(window).load(function() {
     navigator.getUserMedia(constraints, success, failure);
   }
 
-  function resizeUserPrompt() {
-    let userPrompt = $('#username-prompt');
-    let left = window.innerWidth / 2 - 250;
-    let top = window.innerHeight / 2 - 100;
-    userPrompt.css({
-      'position': 'absolute',
-      'top': top,
-      'left': left
-    });
-    userPrompt.addClass('fadeInDownBig');
-  }
 
-  function takeUserInput() {
+
+  function setUserName() {
     let userName = generateName();
     setTimeout(function() {
       getUser();
@@ -424,7 +414,7 @@ function gotLocalDescription(sdp) {
 
 function handleError() {
   console.log('Some error has occured during createOffer()');
-  alertify.alert('Some error has occured during createOffer()');
+  alertify.alert('Some error has occured');
 }
 
 function gotLocalIceCandidate(event) {
