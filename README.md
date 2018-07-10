@@ -1,12 +1,4 @@
-# The Multi-room audio-video conferencing tool with Socket.IO and Node.JS
-
-It's a simple solution to connect anyone over a simple room name, without any additional plugins
-
-So, this utility attempts to handle everything. It:
-
-- Simplifies the communication process, with rich user experience
-- Users can chat
-- accounts for the latest Chrome release's getUserMedia() function to run without ssl, So fake keys added.
+# Video Walls Video Chat Site
 
 
 ## Installation
@@ -29,7 +21,7 @@ npm install
 node app.js
 ```
 
-- This should start your chat app at https://localhost:5000/
-- Any two users can chat over https://localhost:5000/any+room+name
+- This should start your chat app at https://localhost:3000/
+- Any two users can chat over https://localhost:3000/<Room_Name>
 
-## Demo [Heroku App](https://hardeep-rooms.herokuapp.com)
+## Demo [Heroku App](https://joeydash.herokuapp.com)
