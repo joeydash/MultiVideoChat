@@ -237,7 +237,7 @@ $(window).load(function() {
     let userName = generateName();
     setTimeout(function() {
       getUser();
-    }, 2000);
+    }, 4000);
     $('#first-speaker').html(userName);
     socket.username = userName;
     socket.emit('username', userName);
