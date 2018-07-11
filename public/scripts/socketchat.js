@@ -23,6 +23,7 @@ let screenSharedHeight;
 
 
 $(window).load(function() {
+
   let video = $('#local-video');
   let width = 1 * window.innerWidth;
   main_width = width;
@@ -41,13 +42,14 @@ $(window).load(function() {
 
   // alertify
   alertify.defaults.glossary.title = 'video walls alert';
+
   // Setting toolobar
   setToolbar();
-
 
   $('#icons-tools').css({
     'width': .6*height
   });
+
   //Setting ends..
   $('#local-chat-arrow').css({
     'top': sh / 2 - 16
@@ -55,9 +57,7 @@ $(window).load(function() {
 
   screenSharedHeight = sh;
 
-
   //FULL SCREEN MODE
-
   let globalClose = function() {
     socket.emit('remote-disconnected');
     localStream.stop();
@@ -67,27 +67,6 @@ $(window).load(function() {
     localPeerConnection = null;
     remotePeerConnection = null;
   };
-  $(document).on('click', '#icons-tools div:eq(5)', function(e) {
-    console.log('Inside number 5 clicked !!');
-    $(document).one('click', '.main-expand-icon-active', exitFullscreen);
-    $(document).one('keyup', function(e) {
-      if (e.keyCode == 27) {
-        ESC_BUTTON_PRESSED = true;
-        ESC_COUNT++;
-        toggleFunction("fullscreen", $('#icons-tools div:eq(5)'), "main-expand-icon", "main-expand-icon-active");
-      }
-    });
-    toggleFunction("fullscreen", $(this), "main-expand-icon", "main-expand-icon-active");
-    if (globalVideo.requestFullscreen) {
-      globalVideo.requestFullscreen();
-    } else if (globalVideo.msRequestFullscreen) {
-      globalVideo.msRequestFullscreen();
-    } else if (globalVideo.mozRequestFullScreen) {
-      globalVideo.mozRequestFullScreen();
-    } else if (globalVideo.webkitRequestFullscreen) {
-      globalVideo.webkitRequestFullscreen();
-    }
-  });
   //FULL SCREEN MODE ENDS
   //REMOTE VIDEO STOP
   $(document).on('click', '#icons-tools div:eq(0)', function(e) {

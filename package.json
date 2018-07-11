@@ -4,7 +4,7 @@
   "description": "A simple room based webrtc application for audio-video sharing",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "keywords": [
     "webrtc",
