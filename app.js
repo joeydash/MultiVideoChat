@@ -60,10 +60,12 @@ io.sockets.on('connection',function(socket){
 	});
 
 	socket.on('checked-stream',function(data){
+		console.log("Checking function");
 		console.log('Inside checked stream!!..Now emitting checking-for-screen-share !!!');
 		io.to(socket.key).emit('checking-for-screen-share', socket.key, users[socket.key]);
 		if(users[socket.key].length===2)
 		{
+			console.log("My Offer");
 			socket.broadcast.to(socket.key).emit('available-for-offer');
 			io.to(socket.key).emit('users-final', users[socket.key]);
 		}
