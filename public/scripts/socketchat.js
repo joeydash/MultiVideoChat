@@ -205,6 +205,7 @@ $(window).load(function() {
     window.xstream = stream;
     console.log('Got Video!!');
     setTimeout(function() {
+      console.log("Check my stream");
       socket.emit('checked-stream', true);
     }, 1000);
     setTimeout(function() {
