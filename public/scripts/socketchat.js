@@ -83,7 +83,7 @@ $(window).load(function() {
   //4th Button is clicked
   $(document).on('click', '#icons-tools div:eq(4)', function(e) {
     toggleFunction("phone", $(this), "main-phone-drop-icon", ".main-phone-drop-icon-active");
-    console.log('drop call clicked!!');
+    // console.log('drop call clicked!!');
     globalClose();
 
   });
@@ -108,16 +108,16 @@ $(window).load(function() {
     showBlackOverlay();
   });
   socket.on('available-for-answer', function(sdp) {
-    console.log('Creating Answer!!!!');
+    // console.log('Creating Answer!!!!');
     createAnswer(localStream, sdp);
     showBlackOverlay();
   });
   socket.on('available-for-stream', function(sdp) {
-    console.log('In final stages...');
+    // console.log('In final stages...');
     localPeerConnection.setRemoteDescription(new RTCSessionDescription(sdp));
   });
   socket.on('local-candidate-broadcast', function(candidate) {
-    console.log('Inside local-candidate-broadcast');
+    // console.log('Inside local-candidate-broadcast');
     remotePeerConnection.addIceCandidate(new RTCIceCandidate({
       sdpMLineIndex: candidate.sdpMLineIndex,
       candidate: candidate.candidate
@@ -126,7 +126,7 @@ $(window).load(function() {
   });
 
   socket.on('remote-candidate-broadcast', function(candidate) {
-    console.log('Inside remote-candidate-broadcast');
+    // console.log('Inside remote-candidate-broadcast');
     localPeerConnection.addIceCandidate(new RTCIceCandidate({
       sdpMLineIndex: candidate.sdpMLineIndex,
       candidate: candidate.candidate
@@ -134,13 +134,13 @@ $(window).load(function() {
   });
 
   socket.on('users-final', function(data) {
-    console.log('User available for offer is ---> ' + JSON.stringify(data));
+    // console.log('User available for offer is ---> ' + JSON.stringify(data));
     $('#first-speaker').html(data[0]);
     $('#second-speaker').html('with ' + data[1]);
   });
 
   socket.on('disconnected-user-reset', function() {
-    console.log('Resetting!!');
+    // console.log('Resetting!!');
     $('#second-speaker').empty();
     $('#first-speaker').html(socket.username);
     removeRemoteVideo();
@@ -185,7 +185,7 @@ $(window).load(function() {
   });
   //FUNCTIONS START
   function failure() {
-    console.log('Sorry...Could not get the video !!!');
+    // console.log('Sorry...Could not get the video !!!');
     alertify.alert("Sorry...Could not get the video");
   }
 
@@ -203,9 +203,9 @@ $(window).load(function() {
     }
     //NEW CODE//
     window.xstream = stream;
-    console.log('Got Video!!');
+    // console.log('Got Video!!');
     setTimeout(function() {
-      console.log("Check my stream");
+      // console.log("Check my stream");
       socket.emit('checked-stream', true);
     }, 1000);
     setTimeout(function() {
@@ -248,7 +248,7 @@ $(window).load(function() {
 
 function addRemoteVideo(top, height, stream) {
   if (!socket.screenSharedByRemote && !socket.screenShared) {
-    console.log('INSIDE addRemoteVideo...width is ' + main_width);
+    // console.log('INSIDE addRemoteVideo...width is ' + main_width);
     let left = (window.innerWidth - main_width) / 2 + 7;
     $('#remote-video').append($('#my-video'));
     $('#remote-video').find('video').eq(0).addClass('remote-video-right').css({
@@ -267,7 +267,7 @@ function addRemoteVideo(top, height, stream) {
     }, 2000);
   } else if (socket.screenSharedByRemote) {
     //Other guy must have shared the screen..
-    console.log('NOW SHOWING OTHER PERSONS SCREEN AS HE HAS SHARED IT');
+    // console.log('NOW SHOWING OTHER PERSONS SCREEN AS HE HAS SHARED IT');
     globalVideo = $('#my-screen-share')[0];
     window.abc = stream;
     $('#my-screen-share').hide()[0].src = stream;
@@ -298,7 +298,7 @@ function addRemoteVideo(top, height, stream) {
 
 function removeRemoteVideo() {
   if (!socket.screenShared) {
-    console.log('INSIDE removeRemoteVideo...width is ' + main_width);
+    // console.log('INSIDE removeRemoteVideo...width is ' + main_width);
     $('#local-video').find('video').remove();
     $('#local-video').prepend($('#remote-video').find('video').eq(0).removeClass('remote-video-right').css({
       'position': 'absolute',
@@ -363,7 +363,7 @@ function removeRemoteVideo() {
 //FUNCTIONS ENDS
 //WEBRTC FUNCTIONS --- START
 function createOffer(localStream) {
-  console.log('Inside createOffer()....');
+  // console.log('Inside createOffer()....');
   let isChrome = !!navigator.webkitGetUserMedia;
 
   let STUN = {
@@ -385,27 +385,27 @@ function createOffer(localStream) {
 }
 
 function gotLocalDescription(sdp) {
-  console.log('Inside gotLocalDescription()....');
+  // console.log('Inside gotLocalDescription()....');
   localPeerConnection.setLocalDescription(sdp);
   socket.emit('got-local-description', sdp);
 }
 
 function handleError() {
-  console.log('Some error has occured during createOffer()');
+  // console.log('Some error has occured during createOffer()');
   alertify.alert('Some error has occured');
 }
 
 function gotLocalIceCandidate(event) {
-  console.log('Got Local Ice Candidate!!!');
+  // console.log('Got Local Ice Candidate!!!');
   if (event.candidate != null) {
-    console.log(event.candidate);
+    // console.log(event.candidate);
     socket.emit('local-candidate', event.candidate);
   }
 }
 
 function gotLocalVideo(stream) {
-  console.log('Inside got LocalVideo!!');
-  console.log(stream);
+  // console.log('Inside got LocalVideo!!');
+  // console.log(stream);
   remoteStream = stream.stream;
   let objstream;
   //NEW CODE//
@@ -425,7 +425,7 @@ function gotLocalVideo(stream) {
 }
 
 function createAnswer(localStream, sdp) {
-  console.log('Inside createAnswer()....');
+  // console.log('Inside createAnswer()....');
   let isChrome = !!navigator.webkitGetUserMedia;
 
   let STUN = {
@@ -453,23 +453,23 @@ function createAnswer(localStream, sdp) {
 }
 
 function gotRemoteDescription(sdp) {
-  console.log('sdp is ' + sdp);
+  // console.log('sdp is ' + sdp);
   remotePeerConnection.setLocalDescription(sdp);
   socket.emit('got-remote-description', sdp);
 }
 
 function gotRemoteIceCandidate(event) {
-  console.log('Got Remote Ice Candidate!!!');
+  // console.log('Got Remote Ice Candidate!!!');
   if (event.candidate != null) {
-    console.log(event.candidate);
+    // console.log(event.candidate);
     socket.emit('remote-candidate', event.candidate);
   }
 
 }
 
 function gotRemoteVideo(stream) {
-  console.log('Inside got RemoteVideo!!');
-  console.log(stream);
+  // console.log('Inside got RemoteVideo!!');
+  // console.log(stream);
   remoteStream = stream.stream;
   //NEW CODE//
   if (window.URL) {
@@ -508,7 +508,7 @@ function incrementBuffer() {
       $(this).removeClass();
     });
   }
-  console.log('Incremented...REMOTE_CHAT_COUNT is-->' + REMOTE_CHAT_COUNT);
+  // console.log('Incremented...REMOTE_CHAT_COUNT is-->' + REMOTE_CHAT_COUNT);
 }
 
 
@@ -526,7 +526,7 @@ function toggleFunction(name, elem, first, second) {
 
 
 function setToolbar() {
-  console.log('Called setToolbar');
+  // console.log('Called setToolbar');
   $('#toolbar').css({
     'position': 'relative',
     'top': icontop,
@@ -537,7 +537,7 @@ function setToolbar() {
 
 
 function exitFullscreen() {
-  console.log('exitFullscreen called !');
+  // console.log('exitFullscreen called !');
   FULL_SCREEN_BUTTON_CLICKED = true;
   if (document.exitFullscreen) {
     document.exitFullscreen();
