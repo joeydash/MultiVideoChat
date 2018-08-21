@@ -1,5 +1,6 @@
 let socket = io.connect();
-let localStream, localPeerConnection, remotePeerConnection, x, y, remoteStream;
+let localStream = new MediaStream()
+let localPeerConnection, remotePeerConnection, x, y, remoteStream;
 let globalVideo, globalStream, globalClose;
 let REMOTE_CHAT_COUNT = 0;
 let ESC_COUNT = 0;
@@ -104,6 +105,7 @@ $(window).load(function() {
   };
   socket.on('available-for-offer', function() {
     console.log('Creating Offer!!!');
+    console.log("LocalStream is " + localStream);
     createOffer(localStream);
     showBlackOverlay();
   });
@@ -377,6 +379,8 @@ function createOffer(localStream) {
   localPeerConnection = new RTCPeerConnection(iceServers);
   localPeerConnection.onicecandidate = gotLocalIceCandidate;
   localPeerConnection.onaddstream = gotLocalVideo;
+  console.log(typeof(localStream));
+  console.log("LocalStream is " + localStream);
   localPeerConnection.addStream(localStream);
   localPeerConnection.createOffer(gotLocalDescription, handleError);
   if (socket.screenSharedByRemote) {
