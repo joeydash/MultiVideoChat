@@ -61,7 +61,9 @@ $(window).load(function() {
   //FULL SCREEN MODE
   let globalClose = function() {
     socket.emit('remote-disconnected');
-    localStream.stop();
+    if(localStream != undefined){
+      localStream.stop();
+    }
     if (remoteStream != undefined) {
       remoteStream.stop();
     }

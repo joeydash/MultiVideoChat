@@ -38,10 +38,16 @@
       let urlString = window.location.href;
       let connectionId = urlString.split("/")[3];
       console.log(urlString);
+      var applicationUrl = "";
       if(document.referrer.includes("customer-page")){
-        var applicationUrl = document.referrer + "&isProductSearch=false&connectionId="+connectionId;
+        if(document.referrer.includes("connectionId")){
+          let newUrl = document.referrer.split("connectionId")[0];
+          applicationUrl = newUrl + "connectionId="+connectionId;
+        } else {
+          applicationUrl = document.referrer + "&isProductSearch=false&connectionId="+connectionId;
+        }
       } else {
-        var applicationUrl = "https://sales.videowalls.perpule.com";
+        applicationUrl = "https://sales.videowalls.perpule.com";
       }
       window.open(applicationUrl, "_top");
     }
