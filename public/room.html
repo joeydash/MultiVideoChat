@@ -38,7 +38,11 @@
       let urlString = window.location.href;
       let connectionId = urlString.split("/")[3];
       console.log(connectionId)
-      var applicationUrl = document.referrer + "&isProductSearch=false&connectionId="+connectionId;
+      if(urlString.includes("customer-page")){
+        var applicationUrl = document.referrer + "&isProductSearch=false&connectionId="+connectionId;
+      } else {
+        var applicationUrl = "https://sales.videowalls.perpule.com";
+      }
       window.open(applicationUrl, "_top");
     }
   </script>
