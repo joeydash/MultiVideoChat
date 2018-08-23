@@ -37,8 +37,8 @@
     function goBack() {
       let urlString = window.location.href;
       let connectionId = urlString.split("/")[3];
-      console.log(connectionId)
-      if(urlString.includes("customer-page")){
+      console.log(urlString);
+      if(document.referrer.includes("customer-page")){
         var applicationUrl = document.referrer + "&isProductSearch=false&connectionId="+connectionId;
       } else {
         var applicationUrl = "https://sales.videowalls.perpule.com";
