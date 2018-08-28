@@ -24,5 +24,3 @@ node app.js
 
 - This should start your chat app at https://localhost:3000/
 - Any two users can chat over https://localhost:3000/<Room_Name>
-
-## Demo [Heroku App](https://joeydash.herokuapp.com)
