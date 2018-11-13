@@ -4,7 +4,7 @@ services:
     build: ./app
     restart: always
     ports:
-    - 3100:3000
+    - 3200:3000
 
 
 
