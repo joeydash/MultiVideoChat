@@ -1,0 +1,10 @@
+version: '3.6'
+services:
+  app:
+    build: ./app
+    restart: always
+    ports:
+    - 3100:3000
+
+
+
